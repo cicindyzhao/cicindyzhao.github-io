@@ -1,0 +1,159 @@
+<html>
+
+<head>
+    <!-- <script></script>html引用
+<link rel="stylesheet"  css引用-->
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+</head>
+
+<body>
+    <div id="chart">
+        <!-- <svg width="300" height="200">
+        <circle r="20" cx="100" cy="50"></circle>
+        <circle r="20" cx="50" cy="100"></circle>
+        <circle r="20" cx="150" cy="100"></circle>
+        <!-- <g transform="translate(10,-20)"> -->
+        <!-- 移动的方位 -->
+        <!-- <g transform="rotate(-20)"> -->
+        <!-- 旋转20度   -->
+        <!-- <g transform="translate(30 40) rotate(20)">   
+                   <!--transform变化两个方式，坐标轴之间用空格  -->
+
+        <!-- <rect width=200 height=20 x=10 y=50></rect> -->
+        <!-- rect矩形  circle 圆形 -->
+        <!-- <text y=150 x=20>bahdkeg</text>
+        </g> -->
+        <!-- <g></g>将一组元素包起来,一起变动 -->
+        <!-- </svg>  -->
+        <svg width="800" height="500"></svg>
+    </div>
+    <script>
+        var svg = d3.select("#chart svg")
+            // svg
+            //     .append("circle")
+            //     .attr("cx", 50)
+            //     .attr("cy", 150)
+            //     .attr("r", 10)
+            // attr（属性，值）
+        var GdpScale = d3.scaleLinear()
+            .domain([0, 300000]) //定义域
+            .range([0, 300]) //值域
+
+        var LifeScale = d3.scaleLinear()
+            .domain([0, 100])
+            .range([200, 0])
+
+        // var lifeScale = d3.scaleLinear()
+
+        function updateChart(data) {
+            var circles = svg
+                .selectAll("circle")
+                // 选中一组视觉元素
+                .data(data, function(d, i) {
+                    return d["Country"]
+                })
+                // 数据映射
+            circles
+                .enter()
+                .append("circle")
+                .style("fill", "rgba(200,200,0,0.6)")
+                .merge(circles)
+                //merge拿到旧的数据点
+                .transition()
+                .attr("cx", function(d, i) {
+                    return GdpScale(d["GDP"])
+                })
+                .attr("cy", function(d, i) {
+                    return LifeScale(d["Life"])
+                })
+                .attr("r", 10)
+
+            // enter（）找到新的数据点 function（d,i) d代表当前的data point，i代表当前的index
+            circles
+                .exit()
+                .transition().duration(1000)
+                //transition duration([value])这个动作持续多久
+                .style("fill", "rgba(0,0,0,0)")
+                .on("end", function() {
+                    d3.select(this).remove()
+                })
+            var texts = svg
+                .selectAll("circle")
+                // 选中一组视觉元素
+                .data(data, function(d, i) {
+                    return d["Country"]
+                })
+            texts
+                .enter()
+                .append("text")
+                //merge拿到旧的数据点
+                .text(function(d, i) {
+                    return d["Country"]
+                })
+                .merge(texts)
+                .transition()
+                .attr("x", function(d, i) {
+                    return GdpScale(d["GDP"])
+                })
+                .attr("y", function(d, i) {
+                    return LifeScale(d["Life"])
+                })
+                .transition()
+
+            texts
+                .exit()
+                .transition()
+                .style("fill", "rgba(0, 0, 0, 0)")
+                .on('end', function() {
+                    d3.select(this).remove()
+                })
+        }
+
+        d3.json('data.json', function(myData) {
+            // console.log(myData)
+            var yearIndex = 0
+                // updateChart(myData[yearIndex])
+                // d3.interval(function() {
+            console.log(yearIndex)
+            updateChart(myData[yearIndex])
+            yearIndex = (yearIndex + 1) % myData.length
+                // }, 1000)
+                // var gdpAxis = d3.axisBottom(gdpScale)
+                // svg
+                //     .append('g')
+                //     .attr('transform', 'translate(0, 150)')
+                //     .call(gdpAxis)
+                // var lifeAxis = d3.axisLeft(lifeScale)
+                // svg
+                //     .append('g')
+                //     .attr('transform', 'translate(20, 0)')
+                //     .call(lifeAxis)
+
+            // var yearIndex = 1;
+            // d3.interval(function() {
+            //     console.log(yearIndex)
+            //     updateChart(Data[yearIndex])
+            //     yearIndex = (yearIndex + 1) % Data.length
+
+            // updateChart(data)
+            // setTimeout(function() {
+            //     updateChart(data2)
+            // }, 1000)
+            var GdpAxis = d3.axisBottom(GdpScale)
+            svg
+                .append("g")
+                .attr("transform", "translate(0,200)")
+                .call(GdpAxis)
+
+            var LifeAxis = d3.axisLeft(LifeScale)
+            svg
+                .append("g")
+                .attr("transform", "translate(20,0)")
+                .call(LifeAxis)
+        })
+    </script>
+
+</body>
+
+</html>

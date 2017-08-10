@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>你的人生还剩多少？</h1>
+
+        </div>
+        <div class="col-sm-3">
+            <label for="">你的生日</label>
+            <input id="birthday-y" class="form-control" type="text" placeholder="年">
+            <input id="birthday-m" class="form-control" type="text" placeholder="月">
+            <input id="birthday-d" class="form-control" type="text" placeholder="日">
+            <br>
+            <button id="calculate" class="btn btn-lg btn-primary">calculate</button>
+            <br>
+            <label for="">如果你的寿命是80岁，你还能活</label>
+            <input id="result" class="form-control " type="text">天
+
+        </div>
+
+
+
+    </div>
+    <script>
+        $(
+            function() {
+                $("#calculate").click(function() {
+                    console.log("clicked");
+                    var by = $("#birthday-y").val()
+                    var bm = $("#birthday-m").val()
+                    var bd = $("#birthday-d").val()
+                    var result = 365 * 80 - 365 * (2017 - by * 1) - bm * 30 - bd;
+                    /*或者 var result=+num1+ +num2*/
+                    $('#result').val(result);
+                })
+            }
+        )
+    </script>
+</body>
+
+</html>

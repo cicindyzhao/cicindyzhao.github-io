@@ -2,55 +2,70 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <link rel="stylesheet" type="text/css" href="vocab.css">
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <title>香港电影浮沉</title>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="echarts.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div id="director" style="width:800px;height:600px">
+
+    <div class="section center black tk-futura-pt" style="position:relative; background-color:#fff; padding: 40px 0px;">
+
+        <p class="" style="font-size:48px; font-weight: 600; font-size: 48px; letter-spacing: 6px;text-align: center;">北上20载<br>聚焦中港合拍片</p><br>
+        <p class="" style="font-size:20px; font-weight: 100; color: #222222; line-height: 1.3em; text-align: center;font-family:黑体">作者：赵欣</p>
     </div>
-    <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('director'));
-        option = {
-            tooltip: {
-                position: 'top'
-            },
-            title: [],
-            singleAxis: [],
-            series: []
-        };
+    <div class="section center black tk-futura-pt" style="position:relative; background-color:#F7F7F7; padding:50px 0px 16px 0px;">
+        <div class="wrapper" style="height:auto; margin: 0 auto; width:100%;">
+            <div class="left" style="width:640px; margin:0 auto;">
+                <div class="tk-merriweather body-text">
+                    <p>1997-2017，香港回归20周年。</p>
+                    <p>20年来，众多香港导演北上内地加入电影制作，徐克，周星驰，陈可辛，杜琪峰，吴宇森，刘镇伟，尔冬升，陈嘉上，刘伟强，陈木胜，郑保瑞，彭浩翔……</p>
 
-        echarts.util.each(films, function(film, idx) {
-            option.title.push({
-                textBaseline: 'middle',
-                top: (idx + 0.5) * 100 / 7 + '%',
-                text: day
-            });
-            option.singleAxis.push({
-                left: 150,
-                type: 'category',
-                boundaryGap: false,
-                data: hours,
-                top: (idx * 100 / 7 + 5) + '%',
-                height: (100 / 7 - 10) + '%',
-                axisLabel: {
-                    interval: 2
-                }
-            });
-            option.series.push({
-                singleAxisIndex: idx,
-                coordinateSystem: 'singleAxis',
-                type: 'scatter',
-                data: [],
-                symbolSize: function(dataItem) {
-                    return dataItem[1] * 4;
-                }
-            });
-        });
+                </div>
+                <div style="height: 30px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="section center black tk-futura-pt" style="position:relative; background-color:#EAEAEA; padding:50px 0px 16px 0px; height: 740px;">
+        <div class="wrapper" style="height:auto; margin: 0 auto; width:100%;">
+            <div id="chart" style="width:950px; margin:0 auto; display:block; position:relative;">
+                <div id=" " style="text-align: left; width: 640px; margin: 0 auto;">
+                    <p style="font-size: 18px; text-transform: uppercase; font-weight: 600; letter-spacing: 0px;"># 北上：破局与新生</p>
+                </div>
+                <div id="main" style="width: 600px;height:400px;"></div>
+                <script type="text/javascript">
+                    $.getJSON('charts_loader.js', function(res) {
+                        console.log(res);
+                        var myChart = echarts.init(document.getElementById('main'));
+                        myChart.setOption(res);
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="section center black tk-futura-pt" style="position:relative; background-color:#F7F7F7; padding:50px 0px 0px 0px;">
+        <div class="wrapper" style="height:auto; margin: 0 auto; width:100%;">
+            <div class="left" style="width:640px; margin:0 auto;">
+                <div class="tk-merriweather body-text" style="">
+                    <p>
+                        早年，那些较早北上的导演们大都出现了严重的“水土不服”，作品频遭票房和口碑上的溃败。比如陈可辛导演的《投名状》、徐克导演的《七剑》《深海寻人》《女人不坏》、王晶导演的《大内密探零零狗》《未来警察》《大上海》等，这些影片几乎都票房口碑皆输。“港片已死”、“香港导演不行”的论调更是被反复提起。</p>
+                    <p>但到了2012年之后，这些导演似乎集体开窍了，陈可辛拍摄了《中国合伙人》《亲爱的》、徐克拍摄了《龙门飞甲》《狄仁杰》系列影片、《智取威虎山3D》、王晶拍摄了《澳门风云》系列影片、周星驰拍摄了《西游降魔篇》、《西游伏魔篇》、《美人鱼》，其中《美人鱼》更是以33.9亿元的票房高居内地总票房榜首。最近几年，港台导演的名字开始频繁出现在年度票房top10的榜单中。
+                    </p>
+                    <p>风风雨雨20年，香港导演的北上之路有辉煌也有过低谷，但不能否认，香港导演的北上既是香港电影破境中的突围，也是大陆电影注入的新鲜血液。</p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        echarts.util.each(data, function(dataItem) {
-            option.series[dataItem[0]].data.push([dataItem[1], dataItem[2]]);
-        });
-    </script>
 </body>
 
 </html>

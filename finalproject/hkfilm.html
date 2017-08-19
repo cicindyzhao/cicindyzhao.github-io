@@ -11,7 +11,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
     <title>香港电影浮沉</title>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="echarts.min.js"></script>
+    <script src="//cdn.bootcss.com/echarts/3.6.2/echarts.min.js"></script>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </head>
 
@@ -36,21 +36,19 @@
     </div>
     <div class="section center black tk-futura-pt" style="position:relative; background-color:#EAEAEA; padding:50px 0px 16px 0px; height: 740px;">
         <div class="wrapper" style="height:auto; margin: 0 auto; width:100%;">
-            <div id="chart" style="width:950px; margin:0 auto; display:block; position:relative;">
+            <div class="" style="width:950px; margin:0 auto; display:block; position:relative;">
                 <div id=" " style="text-align: left; width: 640px; margin: 0 auto;">
                     <p style="font-size: 18px; text-transform: uppercase; font-weight: 600; letter-spacing: 0px;"># 北上：破局与新生</p>
                 </div>
                 <div id="main" style="width: 600px;height:400px;"></div>
-                <script type="text/javascript">
-                    $.getJSON('charts_loader.js', function(res) {
-                        console.log(res);
-                        var myChart = echarts.init(document.getElementById('main'));
-                        myChart.setOption(res);
-                    });
+                <script src="charts_loader.js" type="text/javascript">
+                    var myChart = echarts.init(document.getElementById('main'));
+                    myChart.setOption(option);
                 </script>
             </div>
         </div>
     </div>
+
     <div class="section center black tk-futura-pt" style="position:relative; background-color:#F7F7F7; padding:50px 0px 0px 0px;">
         <div class="wrapper" style="height:auto; margin: 0 auto; width:100%;">
             <div class="left" style="width:640px; margin:0 auto;">

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="echarts.min.js"></script>
+</head>
+
+<body>
+    <div id="director" style="width:800px;height:600px">
+    </div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('director'));
+        option = {
+            tooltip: {
+                position: 'top'
+            },
+            title: [],
+            singleAxis: [],
+            series: []
+        };
+
+        echarts.util.each(films, function(film, idx) {
+            option.title.push({
+                textBaseline: 'middle',
+                top: (idx + 0.5) * 100 / 7 + '%',
+                text: day
+            });
+            option.singleAxis.push({
+                left: 150,
+                type: 'category',
+                boundaryGap: false,
+                data: hours,
+                top: (idx * 100 / 7 + 5) + '%',
+                height: (100 / 7 - 10) + '%',
+                axisLabel: {
+                    interval: 2
+                }
+            });
+            option.series.push({
+                singleAxisIndex: idx,
+                coordinateSystem: 'singleAxis',
+                type: 'scatter',
+                data: [],
+                symbolSize: function(dataItem) {
+                    return dataItem[1] * 4;
+                }
+            });
+        });
+
+        echarts.util.each(data, function(dataItem) {
+            option.series[dataItem[0]].data.push([dataItem[1], dataItem[2]]);
+        });
+    </script>
+</body>
+
+</html>

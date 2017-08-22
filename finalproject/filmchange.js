@@ -1,6 +1,6 @@
 option1 = {
     title: {
-        text: '2000-2016年香港电影变化',
+        text: '1997-2016年香港电影产量变化',
         subtext: '数据来源：豆瓣',
         textStyle: {
             fontSize: 14,

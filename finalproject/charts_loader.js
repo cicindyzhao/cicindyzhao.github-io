@@ -149,7 +149,7 @@ option = {
         },
         selectedMode: 'multiple',
         selected: {
-            "陈嘉上": true,
+            "陈嘉上": false,
             '陈可辛': false,
             '杜琪峰': false,
             '尔冬升': false,
@@ -160,7 +160,7 @@ option = {
             '王家卫': false,
             '王晶': false,
             '吴宇森': false,
-            '徐克': false,
+            '徐克': true,
             '叶伟信': false,
             '周星驰': false
         }

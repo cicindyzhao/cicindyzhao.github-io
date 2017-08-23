@@ -138,7 +138,7 @@ var itemStyle = {
 option = {
 
     color: [
-        '#8c564b', '#DFF5E0', '#829B65', '#F1869C', '#0270A5', "#3C3147", '#81702A', '#F1DAA2', '#CC6E38', '#960AA7', '#3AB449', '#E63D39', '#2992E8', 'rgba(176,48,96)'
+        '#FFB90F', '#6CA6CD', '#FF3E96', '#2a5caa', '#CDAF95', "#3C3147", '#81702A', '#CAFF70', '#CC6E38', '#B452CD', '#3AB449', '#E63D39', '#f58220', '#B03060'
     ],
     legend: {
         y: 'top',
@@ -248,7 +248,7 @@ option = {
             },
             controller: {
                 inRange: {
-                    color: ['#c23531']
+                    color: ['#B22222']
                 },
                 outOfRange: {
                     color: ['#444']

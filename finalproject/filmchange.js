@@ -81,7 +81,8 @@ option1 = {
                 }
             },
             data: [
-                { xAxis: '2003' }
+                { xAxis: '2003' },
+                { xAxis: "2009" }
             ]
         },
 

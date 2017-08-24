@@ -227,7 +227,7 @@ option = {
     visualMap: [{
             left: 'right',
             top: '10%',
-            show: false,
+
             dimension: 2,
             min: 0,
             max: 350000,
